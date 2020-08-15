@@ -2,7 +2,7 @@
   <div class="background-layer">
     <div class="row d-flex justify-content-center">
       <div class="shadow p-4 bg-white login-container">
-        <form class="mt-3 bg-white" *ngIf="!registerMode">
+        <form class="mt-3 bg-white" *ngIf="!registerMode" #loginForm="ngForm">
     
           <!-- Logo -->
           <img src="../../assets/logo.jpg" style="width:50%;transform:translateX(50%);" class="mb-4">
@@ -15,7 +15,10 @@
               <span class="input-group-text"><i class="fa fa-user" style="display:inline-block;width:1.5rem;"></i></span>
             </div>
   
-            <input type="text" name="username" value="" class="form-control" placeholder="Employee ID"  />
+            <input type="text" name="username" value="" class="form-control" 
+              placeholder="Employee ID" required
+              [(ngModel)]="model.username" #username="ngModel"
+              />
   
             <!-- echo the error from form validations -->
             <div class="invalid-feedback"></div>	
@@ -28,7 +31,9 @@
               <span class="input-group-text"><i class="fa fa-lock" style="display:inline-block;width:1.5rem;"></i></span>
             </div>
   
-            <input type="password" name="password" value="" class="form-control" placeholder="Password"  />
+            <input type="password" name="password" value="" class="form-control" 
+              placeholder="Password" required 
+              [(ngModel)]="model.password" #password="ngModel" />
               
             <!-- echo the error from form validations -->
             <div class="invalid-feedback"></div>	
@@ -39,7 +44,7 @@
             <button type="button" class="btn btn-info btn-block" (click)="login()">Login</button>
           </div>
   
-          <p *ngIf="hasAdmin == false" class="text-center">Don't have an account?<br><a class="text-info pointer" (click)="register()">Register</a></p>
+          <p *ngIf="!hasAdmin" class="text-center">Don't have an account?<br><a class="text-info pointer" (click)="register()">Register</a></p>
 
         </form>
 

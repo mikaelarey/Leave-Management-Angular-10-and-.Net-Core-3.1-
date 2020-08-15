@@ -1,3 +1,7 @@
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTO;
@@ -6,6 +10,7 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
@@ -49,6 +54,43 @@ namespace API.Controllers
 
             return Ok(count);
 
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginUserDTO user)
+        {
+            if (user.Username == null)
+                return Unauthorized();
+
+            var userLogin = await _repo.Login(user.Username.ToLower(), user.Password);
+
+            if (userLogin == null)
+                return Unauthorized();
+
+            var claims = new []
+            {
+                new Claim(ClaimTypes.NameIdentifier, userLogin.UserRoleId.ToString()),
+                new Claim(ClaimTypes.Name, userLogin.Username)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return Ok(new {
+                token = tokenHandler.WriteToken(token)
+            });
         }
     }
 }

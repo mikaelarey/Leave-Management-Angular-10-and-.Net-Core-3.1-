@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.loginButtonClick.emit(true);
-    this.alertify.success('Logged in successful!');
+    this.authService.login(this.model).subscribe(next => {
+      this.loginButtonClick.emit(true);
+      this.alertify.success('Logged in successful!');
+    }, error => {
+      this.alertify.error('Failed to logged in');
+    });
   }
 
   register(): void {
@@ -53,6 +57,7 @@ export class LoginComponent implements OnInit {
       () => {
         this.alertify.success('Registration Successful!');
         this.registerMode = false;
+        this.hasAdmin = true;
       }, error => {
         this.alertify.error('Unable to register user');
       });
