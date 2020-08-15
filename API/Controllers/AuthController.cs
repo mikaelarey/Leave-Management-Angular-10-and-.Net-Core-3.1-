@@ -70,7 +70,8 @@ namespace API.Controllers
             var claims = new []
             {
                 new Claim(ClaimTypes.NameIdentifier, userLogin.UserRoleId.ToString()),
-                new Claim(ClaimTypes.Name, userLogin.Username)
+                new Claim(ClaimTypes.Name, userLogin.Username),
+                new Claim(ClaimTypes.Role, userLogin.UserRoleId.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
