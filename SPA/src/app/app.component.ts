@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SPA';
+  isLoggedIn = false;
+
+  UserLogin(loggedIn: boolean): void {
+    this.isLoggedIn = loggedIn;
+  }
+
 }
