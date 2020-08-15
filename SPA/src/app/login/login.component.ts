@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
         this.registerMode = false;
         this.hasAdmin = true;
       }, error => {
-        this.alertify.error('Unable to register user');
+        this.alertify.error('Unable to register');
+        console.log(error);
       });
   }
 }

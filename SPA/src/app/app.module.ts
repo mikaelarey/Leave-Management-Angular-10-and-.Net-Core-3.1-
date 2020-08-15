@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
+import { ErrorInterceptionProvider } from '../_services/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuthService } from '../_services/auth.service';
   ],
   providers: [
     AlertifyService,
-    AuthService
+    AuthService,
+    ErrorInterceptionProvider
   ],
   bootstrap: [AppComponent]
 })
