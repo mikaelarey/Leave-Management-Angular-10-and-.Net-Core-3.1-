@@ -1,4 +1,4 @@
 <app-login *ngIf="!isLoggedIn" (loginButtonClick)="UserLogin($event)"></app-login>
 
-<app-navbar *ngIf="isLoggedIn"></app-navbar>
+<app-navbar *ngIf="isLoggedIn" (logoutButtonClick)="UserLogin($event)"></app-navbar>
 <router-outlet *ngIf="isLoggedIn"></router-outlet>

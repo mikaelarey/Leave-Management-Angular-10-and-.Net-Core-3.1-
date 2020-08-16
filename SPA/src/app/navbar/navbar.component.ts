@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AlertifyService } from 'src/_services/alertify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  @Output() logoutButtonClick = new EventEmitter();
+
+  constructor(private alertify: AlertifyService) { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
   }
 
-  logout() {
-    
+  logout(): void {
+    localStorage.removeItem('token');
+    this.alertify.message('Successfully logged out.');
+    this.logoutButtonClick.emit(false); // Set the isLoggedin to false
   }
 }

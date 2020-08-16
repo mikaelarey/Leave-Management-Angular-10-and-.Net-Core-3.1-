@@ -2,3 +2,7 @@
     position: absolute;
     top:3rem;
 }
+
+.pointer {
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Leave Management</a>
+  <a class="navbar-brand ml-2">Leave Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,30 +7,30 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        <a class="nav-link mr-2" [routerLink]="['']"><i class="fa fa-dashboard m-2"></i>Dashboard</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/users']">Users</a>
+        <a class="nav-link mr-2" [routerLink]="['/users']"><i class="fa fa-users m-2"></i>Users</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/leave']">Leaves</a>
+        <a class="nav-link mr-2" [routerLink]="['/leave']"><i class="fa fa-list-alt m-2"></i>Leaves</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/trash']">Trash</a>
+        <a class="nav-link mr-2" [routerLink]="['/trash']"><i class="fa fa-trash m-2"></i>Trash</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item mr-2" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/notification']"><i class="fa fa-bell mr-2"></i>Notifications</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle mr-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-user mr-2"></i>Welcome Admin
         </a>
         <div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/profile']" routerLinkActive="active"><i class="fa fa-user m-2"></i>Profile</a>
           <a class="dropdown-item" [routerLink]="['/activity']" routerLinkActive="active"><i class="fa fa-list-alt m-2"></i>Activity</a>
-          <a class="dropdown-item"><i class="fa fa-sign-out m-2"></i>Logout</a>
+          <a class="dropdown-item pointer" (click)="logout()"><i class="fa fa-sign-out m-2"></i>Logout</a>
         </div>
       </li>
     </ul>

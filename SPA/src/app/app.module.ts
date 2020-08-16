@@ -21,6 +21,7 @@ import { LeaveComponent } from './leave/leave.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ActivityComponent } from './activity/activity.component';
+import { AuthGuard } from '../_guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ActivityComponent } from './activity/activity.component';
     AlertifyService,
     AuthService,
     ErrorInterceptionProvider
+    // AuthGuard
   ],
   bootstrap: [AppComponent]
 })

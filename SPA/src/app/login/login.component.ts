@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.hasAdmin = response;
       },
       error => {
-        this.alertify.error(error);
+        this.alertify.error('Failed to load data from the server');
       }
     );
   }

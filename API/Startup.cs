@@ -18,6 +18,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using API.Helpers;
+using Newtonsoft.Json;
+using AutoMapper;
 
 namespace API
 {
@@ -35,8 +37,19 @@ namespace API
         {
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ILeaveManagementRepository, LeaveManagementRepository>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("Sqlite")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => 
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+            //services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            //         .AddJsonOptions(opt => {
+            //             opt.SerializerSettings.ReferenceLoopHandling = 
+            //             Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //         });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
