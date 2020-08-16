@@ -22,6 +22,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AuthGuard } from '../_guard/auth.guard';
+import { UserService } from '../_services/user.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AuthGuard } from '../_guard/auth.guard';
   providers: [
     AlertifyService,
     AuthService,
-    ErrorInterceptionProvider
+    ErrorInterceptionProvider,
+    UserService
     // AuthGuard
   ],
   bootstrap: [AppComponent]

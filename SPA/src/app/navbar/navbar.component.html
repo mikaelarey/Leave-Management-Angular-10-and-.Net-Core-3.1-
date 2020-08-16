@@ -25,7 +25,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle mr-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user mr-2"></i>Welcome Admin
+          <i class="fa fa-user mr-2"></i>Welcome {{ user.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/profile']" routerLinkActive="active"><i class="fa fa-user m-2"></i>Profile</a>

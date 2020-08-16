@@ -1,3 +1,18 @@
-<p>
-  users works!
-</p>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">List of employee</h1>
+  <div class="row">
+    <div class="col-6 col-md-3 col-lg-2" *ngFor="let user of users">
+      <div class="card mb-4">
+        <div class="card-img-wrapper">
+          <img class="card-img-top" src="{{ user.photoUrl }}">
+        </div>
+        <div class="card-body p-1">
+          <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>
+            {{ user.userRole }}
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
