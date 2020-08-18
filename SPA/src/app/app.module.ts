@@ -23,9 +23,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { ActivityComponent } from './activity/activity.component';
 import { AuthGuard } from '../_guard/auth.guard';
 import { UserService } from '../_services/user.service';
+import { JwtModule } from '@auth0/angular-jwt';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+
+// tslint:disable-next-line: typedef
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       HomeComponent,
       LoginComponent,
@@ -36,7 +43,8 @@ import { UserService } from '../_services/user.service';
       LeaveComponent,
       NotificationComponent,
       ProfileComponent,
-      ActivityComponent
+      ActivityComponent,
+      UserDetailComponent
    ],
   imports: [
     BrowserModule,
@@ -44,6 +52,13 @@ import { UserService } from '../_services/user.service';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: tokenGetter,
+    //     whitelistedDomains: ['localhost:5000/'],
+    //     blacListedRoutes: ['localhost:5000/auth/']
+    //   }
+    // })
   ],
   providers: [
     AlertifyService,

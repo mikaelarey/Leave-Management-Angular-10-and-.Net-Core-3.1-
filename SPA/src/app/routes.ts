@@ -8,6 +8,7 @@ import { ProfileComponent} from './profile/profile.component';
 import { TrashComponent } from './trash/trash.component';
 import { UsersComponent } from './users/users.component';
 import { AuthGuard } from 'src/_guard/auth.guard';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 export const appRoutes: Routes = [
 
@@ -17,7 +18,8 @@ export const appRoutes: Routes = [
     { path: 'notification', component: NotificationComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'trash', component: TrashComponent },
-    { path: 'users', component: UsersComponent }
+    { path: 'users', component: UsersComponent },
+    { path: 'user-detail/:id', component: UserDetailComponent }
 
     // { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
